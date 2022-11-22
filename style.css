@@ -1,0 +1,21 @@
+.card {
+    width: 18rem;
+    background-color: ;
+    background-color: hsl(209, 23%, 22%);
+    color: white;
+    border: 0;
+    margin: 20px;
+}
+
+.card p {
+    margin-bottom: 5px;
+}
+
+.card img {
+    width: 288px;
+    height: 201px;
+}
+
+.text-bold {
+    font-weight: bold;
+}
