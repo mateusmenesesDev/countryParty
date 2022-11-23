@@ -1,21 +1,40 @@
+body {
+  background-color: black;
+}
+
 .card {
-    width: 18rem;
-    background-color: ;
-    background-color: hsl(209, 23%, 22%);
-    color: white;
-    border: 0;
-    margin: 20px;
+  width: 18rem;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+  border: 0;
+  margin: 20px;
 }
 
 .card p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .card img {
-    width: 288px;
-    height: 201px;
+  width: 288px;
+  height: 201px;
 }
 
 .text-bold {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.dropdown-toggle {
+  width: 160px;
+}
+
+.dropdown-menu {
+  background-color: hsl(209, 23%, 22%);
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.dropdown-item:hover {
+  color: #212529;
 }
