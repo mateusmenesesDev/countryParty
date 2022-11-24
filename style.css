@@ -1,0 +1,74 @@
+body {
+  background-color: black;
+}
+
+/* Cards */
+.card {
+  width: 18rem;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+  border: 0;
+  margin: 20px;
+}
+
+.card p {
+  margin-bottom: 5px;
+}
+
+.card img {
+  width: 288px;
+  height: 201px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* Drop down menu */
+.dropdown-toggle {
+  width: 160px;
+  margin: 20px;
+  background-color: hsl(209, 23%, 22%);
+}
+
+.dropdown-menu {
+  background-color: hsl(209, 23%, 22%);
+}
+
+.dropdown-item {
+  color: white;
+}
+
+.dropdown-item:hover {
+  color: #212529;
+}
+
+/* Search box */
+#search-box {
+  margin: 20px;
+  width: 300px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding-left: 30px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  color: white;
+  background-color: hsl(209, 23%, 22%);
+}
+
+input[type=text]:focus {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+
+.mb-3 i {
+  position: absolute;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+  margin-left: 20px;
+}
