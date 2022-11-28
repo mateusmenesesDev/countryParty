@@ -30,6 +30,10 @@ header h1 {
 }
 
 /* Cards */
+#card-flex {
+  display: flex;
+}
+
 .card {
   width: 18rem;
   background-color: hsl(209, 23%, 22%);
@@ -49,6 +53,18 @@ header h1 {
 
 .text-bold {
   font-weight: bold;
+}
+
+/* Placeholder card */
+div.placeholder {
+  height: 201px;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+span.placeholder {
+  margin-bottom: 13px;
+  border-radius: 2px;
 }
 
 /* Drop down menu */
