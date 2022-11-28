@@ -115,3 +115,9 @@ input[type=text]:focus {
   min-width: 40px;
   margin-left: 20px;
 }
+
+/* Display Style for elements */
+
+#sample-elements {
+  display: none;
+}
