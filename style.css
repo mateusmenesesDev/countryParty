@@ -33,10 +33,26 @@ header h1 {
   color: hsl(200, 15%, 8%);
 }
 
+.elements:hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+}
+
 .dark-mode-elements {
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
 }
+
+.dark-mode-elements:hover {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark-mode-elements:focus {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
 
 #dark-mode-container {
   cursor: pointer;
