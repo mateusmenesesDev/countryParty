@@ -9,17 +9,16 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 300;
   color: hsl(200, 15%, 8%);
+  margin: auto;
 }
 
 header {
-  margin: 1% 5% 1% 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
+  width: 100%;
+  border-bottom: 1px solid black;
 }
 
 header h1 {
+  margin: 0;
   font-size: 22px;
   font-weight: 800;
 }
@@ -27,6 +26,11 @@ header h1 {
 .dark-mode {
   background-color: hsl(207, 26%, 17%);
   color: hsl(0, 0%, 100%);
+}
+
+#dark-mode {
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Cards */
@@ -70,7 +74,7 @@ span.placeholder {
 /* Drop down menu */
 .dropdown-toggle {
   width: 160px;
-  margin: 20px;
+  /* margin: 20px; */
   background-color: hsl(209, 23%, 22%);
 }
 
@@ -88,14 +92,14 @@ span.placeholder {
 
 /* Search box */
 #search-box {
-  margin: 20px;
+  /* margin: 20px; */
   width: 300px;
 }
 
 input[type=text] {
   width: 100%;
   padding-left: 30px;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   box-sizing: border-box;
   color: white;
   background-color: hsl(209, 23%, 22%);
@@ -113,11 +117,35 @@ input[type=text]:focus {
 .icon {
   padding: 10px;
   min-width: 40px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 /* Display Style for elements */
 
 #sample-elements {
   display: none;
+}
+
+#search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 90%;
+}
+
+.search {
+  position: relative;
+}
+
+#header-container {
+  display: flex;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  font-weight: 600;
+  margin: 0 auto;
+  width: 90%;
 }

@@ -16,40 +16,63 @@
 
 <body>
   <header>
-    <h1>Where in the World?</h1>
-    <div id="dark-mode">
-      <i class="fa-regular fa-moon"></i>
-      <span>Dark Mode</span>
+    <div id="header-container">
+      <h1>Where in the World?</h1>
+      <div id="dark-mode">
+        <i class="fa-regular fa-moon"></i>
+        <span>Dark Mode</span>
+      </div>
     </div>
   </header>
-  <hr>
 
   <main>
+    <div id="search-filter-container">
+      <!-- Input search -->
+      <section class="mb-3 search">
+        <i class="fa-solid fa-magnifying-glass icon"></i>
+        <input type="text" class="form-control" id="search-box" placeholder="Search for a country">
+      </section>
+  
+      <!-- Drop-down menu -->
+      <section class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter By Region
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Africa</a></li>
+          <li><a class="dropdown-item" href="#">America</a></li>
+          <li><a class="dropdown-item" href="#">Asia</a></li>
+          <li><a class="dropdown-item" href="#">Europe</a></li>
+          <li><a class="dropdown-item" href="#">Oceania</a></li>
+        </ul>
+      </section>
+    </div>
+
     <!-- Sample elements -->
     <div id="sample-elements">
       <div class="card" id="card-with-content">
         <img src="" class="card-img-top" alt="Country's flag">
         <div class="card-body">
-            <h3 class="country-name card-title">England</h3>
-            <p class="country-pop card-text"><span class="text-bold">Population: </span></p>
-            <p class="country-region card-text"><span class="text-bold">Region: </span></p>
-            <p class="country-capital card-text"><span class="text-bold">Capital: </span></p>
+          <h3 class="country-name card-title">England</h3>
+          <p class="country-pop card-text"><span class="text-bold">Population: </span></p>
+          <p class="country-region card-text"><span class="text-bold">Region: </span></p>
+          <p class="country-capital card-text"><span class="text-bold">Capital: </span></p>
         </div>
       </div>
       <div class="card" aria-hidden="true">
         <div class="placeholder placeholder-glow">
         </div>
         <div class="card-body">
-        <h5 class="card-title placeholder-glow">
+          <h5 class="card-title placeholder-glow">
             <span class="placeholder col-6 placeholder-lg"></span>
-        </h5>
-        <p class="card-text placeholder-glow">
+          </h5>
+          <p class="card-text placeholder-glow">
             <span class="placeholder col-7"></span>
             <span class="placeholder col-4"></span>
             <span class="placeholder col-4"></span>
             <span class="placeholder col-6"></span>
             <span class="placeholder col-8"></span>
-        </p>
+          </p>
         </div>
       </div>
     </div>
