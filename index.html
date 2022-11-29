@@ -17,7 +17,7 @@
 <body>
   <header>
     <h1>Where in the World?</h1>
-    <div>
+    <div id="dark-mode">
       <i class="fa-regular fa-moon"></i>
       <span>Dark Mode</span>
     </div>
@@ -25,7 +25,34 @@
   <hr>
 
   <main>
-
+    <!-- Sample elements -->
+    <div id="sample-elements">
+      <div class="card" id="card-with-content">
+        <img src="" class="card-img-top" alt="Country's flag">
+        <div class="card-body">
+            <h3 class="country-name card-title">England</h3>
+            <p class="country-pop card-text"><span class="text-bold">Population: </span></p>
+            <p class="country-region card-text"><span class="text-bold">Region: </span></p>
+            <p class="country-capital card-text"><span class="text-bold">Capital: </span></p>
+        </div>
+      </div>
+      <div class="card" aria-hidden="true">
+        <div class="placeholder placeholder-glow">
+        </div>
+        <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+            <span class="placeholder col-6 placeholder-lg"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+            <span class="placeholder col-7"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-4"></span>
+            <span class="placeholder col-6"></span>
+            <span class="placeholder col-8"></span>
+        </p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="https://kit.fontawesome.com/e219d8cace.js" crossorigin="anonymous"></script>
