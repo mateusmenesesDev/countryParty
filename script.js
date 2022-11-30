@@ -9,3 +9,15 @@ window.onload = () => {
     }
   })
 };
+
+function changeTextDropdown() {
+  const btn = document.querySelector('.dropdown button');
+  const lis = document.querySelectorAll('.dropdown-item');
+  for (let i = 0; i < lis.length; i += 1) {
+    lis[i].addEventListener('click', (event) => {
+      btn.innerHTML = event.target.innerHTML;
+    });
+  }
+}
+
+changeTextDropdown();
