@@ -18,50 +18,69 @@ function changeTextDropdown() {
   }
 }
 
-async function getCountries() {
-  const request = await fetch("https://restcountries.com/v3.1/all");
-  const countries = await request.json();
-  const cardName = document.querySelector('.card.sample');
-  countries.forEach((country) => {
-    const newCard = cardName.cloneNode(true);
-    newCard.classList.remove('sample');
-    newCard.querySelector('img').src = country.flags.png;
-    newCard.querySelector('h3').innerHTML = country.name.common;
-    const dataP = newCard.querySelectorAll('span');
-    dataP[0].innerHTML = `Population: ${country.population}`;
-    dataP[1].innerHTML = `Region: ${country.region}`;
-    dataP[2].innerHTML = `Capital: ${country.capital}`;
-    const cardContainer = document.querySelector('#card-container');
-    cardContainer.appendChild(newCard);
-  });
-}
-
-async function filterCountries() {
-  const region = document.querySelector('.dropdown button').innerHTML;
-  console.log(region);
-  const cardName = document.querySelector('.card.sample');
-  console.log(cardName);
+// Delete all cards if necessary from #card-container
+function deleteAllCardsInContainer() {
   const countriesToRemove = document.querySelectorAll('#card-container .card');
   countriesToRemove.forEach((element) => {
     element.remove();
   });
+}
+
+// Add information to cards from API data and append them to #card-container
+function addCardToPage(country, cardName) {
+  const newCard = cardName.cloneNode(true);
+  newCard.classList.remove('sample');
+  newCard.querySelector('img').src = country.flags.png;
+  newCard.querySelector('h3').innerHTML = country.name.common;
+  const dataP = newCard.querySelectorAll('span');
+  dataP[0].innerHTML = `Population: ${country.population}`;
+  dataP[1].innerHTML = `Region: ${country.region}`;
+  dataP[2].innerHTML = `Capital: ${country.capital}`;
+  const cardContainer = document.querySelector('#card-container');
+  cardContainer.appendChild(newCard);
+}
+
+function removePlaceholders() {
+  const placeholders = document.querySelectorAll('#card-container .card.placeholder');
+  placeholders.forEach((element) => element.remove());
+}
+
+function addPlaceholders() {
+  const placeholder = document.querySelector('#sample-elements .card.placeholder');
+  const cardContainer = document.querySelector('#card-container');
+  for (let i = 0; i < 8; i += 1) {
+    const newCard = placeholder.cloneNode(true)
+    cardContainer.appendChild(newCard);
+  }
+}
+
+// Gets all countries and add them to the cards
+async function getCountries() {
+  const request = await fetch("https://restcountries.com/v3.1/all");
+  const countries = await request.json();
+  const cardName = document.querySelector('.card.sample');
+  removePlaceholders();
+  countries.forEach((country) => {
+    addCardToPage(country, cardName);
+  });
+}
+
+// Filter countries based on dropdown menu for Regions
+async function filterCountries() {
+  const region = document.querySelector('.dropdown button').innerHTML;
+  const cardName = document.querySelector('.card.sample');
+  // Delete all cards inside #card-container
+  deleteAllCardsInContainer();
   if (region === 'All continents') {
     getCountries();
     return;
   }
+  addPlaceholders();
   const request = await fetch(`https://restcountries.com/v3.1/region/${region}`)
   const countries = await request.json();
+  removePlaceholders();
   countries.forEach((country) => {
-    const newCard = cardName.cloneNode(true);
-    newCard.classList.remove('sample');
-    newCard.querySelector('img').src = country.flags.png;
-    newCard.querySelector('h3').innerHTML = country.name.common;
-    const dataP = newCard.querySelectorAll('span');
-    dataP[0].innerHTML = `Population: ${country.population}`;
-    dataP[1].innerHTML = `Region: ${country.region}`;
-    dataP[2].innerHTML = `Capital: ${country.capital}`;
-    const cardContainer = document.querySelector('#card-container');
-    cardContainer.appendChild(newCard);
+    addCardToPage(country, cardName);
   });
 }
 
