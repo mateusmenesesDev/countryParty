@@ -21,9 +21,10 @@ function changeTextDropdown() {
 async function getCountries() {
   const request = await fetch("https://restcountries.com/v3.1/all");
   const countries = await request.json();
-  const cardName = document.querySelector('.card');
+  const cardName = document.querySelector('.card.sample');
   countries.forEach((country) => {
     const newCard = cardName.cloneNode(true);
+    newCard.classList.remove('sample');
     newCard.querySelector('img').src = country.flags.png;
     newCard.querySelector('h3').innerHTML = country.name.common;
     const dataP = newCard.querySelectorAll('span');
@@ -38,15 +39,21 @@ async function getCountries() {
 async function filterCountries() {
   const region = document.querySelector('.dropdown button').innerHTML;
   console.log(region);
-  const cardName = document.querySelector('.card');
-  const countriesToRemove = document.querySelectorAll('.card');
+  const cardName = document.querySelector('.card.sample');
+  console.log(cardName);
+  const countriesToRemove = document.querySelectorAll('#card-container .card');
   countriesToRemove.forEach((element) => {
     element.remove();
   });
+  if (region === 'All continents') {
+    getCountries();
+    return;
+  }
   const request = await fetch(`https://restcountries.com/v3.1/region/${region}`)
   const countries = await request.json();
   countries.forEach((country) => {
     const newCard = cardName.cloneNode(true);
+    newCard.classList.remove('sample');
     newCard.querySelector('img').src = country.flags.png;
     newCard.querySelector('h3').innerHTML = country.name.common;
     const dataP = newCard.querySelectorAll('span');
@@ -56,7 +63,6 @@ async function filterCountries() {
     const cardContainer = document.querySelector('#card-container');
     cardContainer.appendChild(newCard);
   });
-
 }
 
 window.onload = () => {
