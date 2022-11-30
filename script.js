@@ -57,7 +57,8 @@ function addPlaceholders() {
 // Gets all countries and add them to the cards
 async function getCountries() {
   const request = await fetch("https://restcountries.com/v3.1/all");
-  const countries = await request.json();
+  const countriesUnsorted = await request.json();
+  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
   const cardName = document.querySelector('.card.sample');
   removePlaceholders();
   countries.forEach((country) => {
@@ -77,7 +78,8 @@ async function filterCountries() {
   }
   addPlaceholders();
   const request = await fetch(`https://restcountries.com/v3.1/region/${region}`)
-  const countries = await request.json();
+  const countriesUnsorted = await request.json();
+  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
   removePlaceholders();
   countries.forEach((country) => {
     addCardToPage(country, cardName);
