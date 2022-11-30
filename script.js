@@ -40,5 +40,3 @@ window.onload = () => {
   changeTextDropdown();
   getCountries();
 };
-
-changeTextDropdown();
