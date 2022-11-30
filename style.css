@@ -14,7 +14,8 @@ body {
 
 header {
   width: 100%;
-  border-bottom: 1px solid black;
+  box-shadow: 1px 1px 5px rgb(137, 137, 137);
+  background-color: hsl(0, 0%, 100%)
 }
 
 header h1 {
@@ -98,6 +99,12 @@ span.placeholder {
 }
 
 /* Drop down menu */
+/* bug do botão está aqui --bs-btn-active-bg: */
+.dropdown button:focus, .dropdown button:active {
+  background-color: white !important;
+  color: hsl(200, 15%, 8%);
+}
+
 .dropdown-toggle {
   width: 160px;
   /* margin: 20px; */  
