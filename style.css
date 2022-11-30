@@ -100,14 +100,15 @@ span.placeholder {
 
 /* Drop down menu */
 /* bug do botão está aqui --bs-btn-active-bg: */
-.dropdown button:focus, .dropdown button:active {
+.dropdown button:focus,
+.dropdown button:active {
   background-color: white !important;
   color: hsl(200, 15%, 8%);
 }
 
 .dropdown-toggle {
   width: 160px;
-  /* margin: 20px; */  
+  /* margin: 20px; */
 }
 
 .dropdown-menu {
@@ -133,7 +134,7 @@ input[type=text] {
   width: 100%;
   padding-left: 30px;
   /* margin: 8px 0; */
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 
 input[type=text]:focus {
