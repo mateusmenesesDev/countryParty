@@ -9,24 +9,55 @@ body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 300;
   color: hsl(200, 15%, 8%);
+  margin: auto;
 }
 
 header {
-  margin: 1% 5% 1% 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
+  width: 100%;
+  box-shadow: 1px 1px 5px rgb(137, 137, 137);
+  background-color: hsl(0, 0%, 100%)
 }
 
 header h1 {
+  margin: 0;
   font-size: 22px;
   font-weight: 800;
 }
 
-.dark-mode {
+.dark-mode-background {
   background-color: hsl(207, 26%, 17%);
   color: hsl(0, 0%, 100%);
+}
+
+.elements {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+}
+
+.elements:hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+}
+
+.dark-mode-elements {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark-mode-elements:hover {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
+.dark-mode-elements:focus {
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+
+
+#dark-mode-container {
+  cursor: pointer;
+  user-select: none;
 }
 
 /* Cards */
@@ -36,8 +67,8 @@ header h1 {
 
 .card {
   width: 18rem;
-  background-color: hsl(209, 23%, 22%);
-  color: white;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
   border: 0;
   margin: 20px;
 }
@@ -68,43 +99,48 @@ span.placeholder {
 }
 
 /* Drop down menu */
+/* bug do botão está aqui --bs-btn-active-bg: */
+.dropdown button:focus,
+.dropdown button:active {
+  background-color: white !important;
+  color: hsl(200, 15%, 8%);
+}
+
 .dropdown-toggle {
   width: 160px;
-  margin: 20px;
-  background-color: hsl(209, 23%, 22%);
+  /* margin: 20px; */
 }
 
-.dropdown-menu {
-  background-color: hsl(209, 23%, 22%);
-}
+/* .dropdown-menu {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+} */
 
-.dropdown-item {
-  color: white;
-}
+/* .dropdown-item {
+  color: hsl(200, 15%, 8%);
+} */
 
-.dropdown-item:hover {
-  color: #212529;
-}
+/* .dropdown-item:hover {
+  background-color: hsl(0, 0%, 100%);
+} */
 
 /* Search box */
 #search-box {
-  margin: 20px;
+  /* margin: 20px; */
   width: 300px;
 }
 
 input[type=text] {
   width: 100%;
   padding-left: 30px;
-  margin: 8px 0;
+  /* margin: 8px 0; */
   box-sizing: border-box;
-  color: white;
-  background-color: hsl(209, 23%, 22%);
 }
 
-input[type=text]:focus {
-  background-color: hsl(209, 23%, 22%);
-  color: white;
-}
+/* input[type=text]:focus {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(200, 15%, 8%);
+} */
 
 .mb-3 i {
   position: absolute;
@@ -113,7 +149,44 @@ input[type=text]:focus {
 .icon {
   padding: 10px;
   min-width: 40px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+}
+
+/* Display Style for elements */
+
+#sample-elements {
+  display: none;
+}
+
+#search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 90%;
+}
+
+.search {
+  position: relative;
+}
+
+#header-container {
+  display: flex;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  font-weight: 600;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#card-container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 /* Display Style for elements */
