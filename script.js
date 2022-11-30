@@ -1,6 +1,5 @@
 function darkMode() {
   document.querySelector('body').classList.toggle('dark-mode-background');
-  document.querySelector('header').classList.toggle('dark-mode-elements');
   const elements = document.querySelectorAll('.elements');
   for (const element of elements) {
     element.classList.toggle('dark-mode-elements');
@@ -27,15 +26,15 @@ function deleteAllCardsInContainer() {
 }
 
 // Add information to cards from API data and append them to #card-container
-function addCardToPage(country, cardName) {
-  const newCard = cardName.cloneNode(true);
+function addCardToPage(country, cardTemplate) {
+  const newCard = cardTemplate.cloneNode(true);
   newCard.classList.remove('sample');
   newCard.querySelector('img').src = country.flags.png;
   newCard.querySelector('h3').innerHTML = country.name.common;
   const dataP = newCard.querySelectorAll('span');
-  dataP[0].innerHTML = `Population: ${country.population}`;
-  dataP[1].innerHTML = `Region: ${country.region}`;
-  dataP[2].innerHTML = `Capital: ${country.capital}`;
+  dataP[0].innerHTML += country.population;
+  dataP[1].innerHTML += country.region;
+  dataP[2].innerHTML += country.capital;
   const cardContainer = document.querySelector('#card-container');
   cardContainer.appendChild(newCard);
 }
@@ -58,17 +57,17 @@ function addPlaceholders() {
 async function getCountries() {
   const request = await fetch("https://restcountries.com/v3.1/all");
   const countries = await request.json();
-  const cardName = document.querySelector('.card.sample');
+  const cardTemplate = document.querySelector('.card.sample');
   removePlaceholders();
   countries.forEach((country) => {
-    addCardToPage(country, cardName);
+    addCardToPage(country, cardTemplate);
   });
 }
 
 // Filter countries based on dropdown menu for Regions
 async function filterCountries() {
   const region = document.querySelector('.dropdown button').innerHTML;
-  const cardName = document.querySelector('.card.sample');
+  const cardTemplate = document.querySelector('.card.sample');
   // Delete all cards inside #card-container
   deleteAllCardsInContainer();
   if (region === 'All continents') {
@@ -80,7 +79,7 @@ async function filterCountries() {
   const countries = await request.json();
   removePlaceholders();
   countries.forEach((country) => {
-    addCardToPage(country, cardName);
+    addCardToPage(country, cardTemplate);
   });
 }
 
