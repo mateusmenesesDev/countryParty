@@ -13,6 +13,7 @@ function changeTextDropdown() {
   for (let i = 0; i < lis.length; i += 1) {
     lis[i].addEventListener('click', (event) => {
       btn.innerHTML = event.target.innerHTML;
+      filterCountries();
     });
   }
 }
@@ -32,6 +33,30 @@ async function getCountries() {
     const cardContainer = document.querySelector('#card-container');
     cardContainer.appendChild(newCard);
   });
+}
+
+async function filterCountries() {
+  const region = document.querySelector('.dropdown button').innerHTML;
+  console.log(region);
+  const cardName = document.querySelector('.card');
+  const countriesToRemove = document.querySelectorAll('.card');
+  countriesToRemove.forEach((element) => {
+    element.remove();
+  });
+  const request = await fetch(`https://restcountries.com/v3.1/region/${region}`)
+  const countries = await request.json();
+  countries.forEach((country) => {
+    const newCard = cardName.cloneNode(true);
+    newCard.querySelector('img').src = country.flags.png;
+    newCard.querySelector('h3').innerHTML = country.name.common;
+    const dataP = newCard.querySelectorAll('span');
+    dataP[0].innerHTML = `Population: ${country.population}`;
+    dataP[1].innerHTML = `Region: ${country.region}`;
+    dataP[2].innerHTML = `Capital: ${country.capital}`;
+    const cardContainer = document.querySelector('#card-container');
+    cardContainer.appendChild(newCard);
+  });
+
 }
 
 window.onload = () => {
