@@ -188,3 +188,9 @@ input[type=text] {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+/* Display Style for elements */
+
+#sample-elements {
+  display: none;
+}
