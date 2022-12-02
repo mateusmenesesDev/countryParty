@@ -85,9 +85,29 @@ async function filterCountries() {
   });
 }
 
+async function searchCountries() {
+  const cardTemplate = document.querySelector('.card.sample');
+  const name = document.querySelector('#search-box').value;
+  deleteAllCardsInContainer();
+  if (name === '') {
+    getCountries();
+    return;
+  }
+  addPlaceholders();
+  const request = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+  const countriesUnsorted = await request.json();
+  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
+  removePlaceholders();
+  countries.forEach((country) => {
+    addCardToPage(country, cardTemplate);
+  });
+}
+
 window.onload = () => {
   const darkModeContainer = document.querySelector('#dark-mode-container');
   darkModeContainer.addEventListener('click', darkMode);
+  const searchBox = document.querySelector('#search-box');
+  searchBox.addEventListener('input', searchCountries);
   changeTextDropdown();
   getCountries();
 };
