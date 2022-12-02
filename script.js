@@ -19,24 +19,29 @@ function changeTextDropdown() {
 
 // Delete all cards if necessary from #card-container
 function deleteAllCardsInContainer() {
-  const countriesToRemove = document.querySelectorAll('#card-container .card');
-  countriesToRemove.forEach((element) => {
-    element.remove();
+  const cards = document.querySelectorAll('#card-container .card');
+  cards.forEach((card) => {
+    card.remove();
   });
 }
 
 // Add information to cards from API data and append them to #card-container
-function addCardToPage(country, cardTemplate) {
-  const newCard = cardTemplate.cloneNode(true);
-  newCard.classList.remove('sample');
-  newCard.querySelector('img').src = country.flags.png;
-  newCard.querySelector('h3').innerHTML = country.name.common;
-  const dataP = newCard.querySelectorAll('span');
-  dataP[0].innerHTML += country.population;
-  dataP[1].innerHTML += country.region;
-  dataP[2].innerHTML += country.capital;
-  const cardContainer = document.querySelector('#card-container');
-  cardContainer.appendChild(newCard);
+function displayCards(countries) {
+  removePlaceholders();
+  const cardTemplate = document.querySelector('.card.sample');
+  countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+  countries.forEach((country) => {
+    const newCard = cardTemplate.cloneNode(true);
+    newCard.classList.remove('sample');
+    newCard.querySelector('img').src = country.flags.png;
+    newCard.querySelector('h3').innerHTML = country.name.common;
+    const dataP = newCard.querySelectorAll('span');
+    dataP[0].innerHTML += country.population;
+    dataP[1].innerHTML += country.region;
+    dataP[2].innerHTML += country.capital;
+    const cardContainer = document.querySelector('#card-container');
+    cardContainer.appendChild(newCard);
+  });
 }
 
 function removePlaceholders() {
@@ -56,19 +61,13 @@ function addPlaceholders() {
 // Gets all countries and add them to the cards
 async function getCountries() {
   const request = await fetch("https://restcountries.com/v3.1/all");
-  const countriesUnsorted = await request.json();
-  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
-  const cardTemplate = document.querySelector('.card.sample');
-  removePlaceholders();
-  countries.forEach((country) => {
-    addCardToPage(country, cardTemplate);
-  });
+  const countries = await request.json();
+  displayCards(countries);
 }
 
 // Filter countries based on dropdown menu for Regions
 async function filterCountries() {
   const region = document.querySelector('.dropdown button').innerHTML;
-  const cardTemplate = document.querySelector('.card.sample');
   // Delete all cards inside #card-container
   deleteAllCardsInContainer();
   if (region === 'All continents') {
@@ -77,16 +76,11 @@ async function filterCountries() {
   }
   addPlaceholders();
   const request = await fetch(`https://restcountries.com/v3.1/region/${region}`)
-  const countriesUnsorted = await request.json();
-  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
-  removePlaceholders();
-  countries.forEach((country) => {
-    addCardToPage(country, cardTemplate);
-  });
+  const countries = await request.json();
+  displayCards(countries);
 }
 
 async function searchCountries() {
-  const cardTemplate = document.querySelector('.card.sample');
   const name = document.querySelector('#search-box').value;
   deleteAllCardsInContainer();
   if (name === '') {
@@ -95,12 +89,8 @@ async function searchCountries() {
   }
   addPlaceholders();
   const request = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-  const countriesUnsorted = await request.json();
-  const countries = countriesUnsorted.sort((a, b) => a.name.common.localeCompare(b.name.common));
-  removePlaceholders();
-  countries.forEach((country) => {
-    addCardToPage(country, cardTemplate);
-  });
+  const countries = await request.json();
+  displayCards(countries);
 }
 
 window.onload = () => {
