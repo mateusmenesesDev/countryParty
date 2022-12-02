@@ -18,7 +18,8 @@ header {
   background-color: hsl(0, 0%, 100%)
 }
 
-header a, a:hover {
+header a,
+a:hover {
   color: hsl(200, 15%, 8%);
   text-decoration: none;
 }
